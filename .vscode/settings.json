@@ -1,0 +1,13 @@
+{
+  "[rust]": { "editor.defaultFormatter": "rust-lang.rust-analyzer" },
+  "editor.formatOnSave": true,
+  "editor.rulers": [80, 120],
+  "rust-analyzer.check.allTargets": true,
+  "rust-analyzer.check.command": "clippy",
+  "rust-analyzer.check.features": "all",
+  "rust-analyzer.checkOnSave": true,
+  "rust-analyzer.inlayHints.chainingHints.enable": false,
+  "rust-analyzer.inlayHints.closingBraceHints.enable": false,
+  "rust-analyzer.inlayHints.parameterHints.enable": false,
+  "rust-analyzer.inlayHints.typeHints.enable": false
+}

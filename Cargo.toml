@@ -1,0 +1,27 @@
+[package]
+name = "onecfg"
+version = "0.1.0"
+description = "One config file to generate them all."
+repository = "https://github.com/clebert/onecfg-rust"
+readme = "README.md"
+license = "MIT"
+keywords = ["config"]
+categories = ["command-line-utilities"]
+edition = "2021"
+
+[lib]
+name = "onecfg"
+path = "src/onecfg/lib.rs"
+
+[[bin]]
+name = "onecfg"
+test = false
+doc = false
+
+[dependencies]
+anyhow = "1.0"
+clap = { version = "4.1", features = ["derive", "wrap_help"] }
+reqwest = { version = "0.11", features = ["blocking"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.6"
