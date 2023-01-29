@@ -1,13 +1,16 @@
 [package]
 name = "onecfg"
 version = "0.1.0"
-description = "One config file to generate them all."
-repository = "https://github.com/clebert/onecfg-rust"
-readme = "README.md"
-license = "MIT OR Apache-2.0"
-keywords = ["config"]
-categories = ["command-line-utilities"]
+authors = ["Clemens Akens"]
 edition = "2021"
+description = "One config file to generate them all."
+readme = "README.md"
+homepage = "https://github.com/clebert/onecfg-rust"
+repository = "https://github.com/clebert/onecfg-rust"
+license = "MIT OR Apache-2.0"
+keywords = ["cli", "json", "config", "generator"]
+categories = ["command-line-utilities"]
+include = ["src/**/*.rs", "Cargo.toml", "LICENSE-*"]
 
 [lib]
 name = "onecfg"
