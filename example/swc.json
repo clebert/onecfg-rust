@@ -1,0 +1,26 @@
+{
+  "defines": {
+    ".swcrc": {"format": "json"}
+  },
+  "patches": {
+    ".swcrc": [
+      {
+        "value": {
+          "jsc": {"target": "es2022"},
+          "module": {"type": "es6"},
+          "sourceMaps": true
+        }
+      }
+    ],
+    ".gitignore": [
+      {
+        "value": ["/.swcrc"]
+      }
+    ],
+    ".prettierignore": [
+      {
+        "value": ["/.swcrc"]
+      }
+    ]
+  }
+}

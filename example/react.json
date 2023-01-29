@@ -1,0 +1,14 @@
+{
+  "patches": {
+    "tsconfig.base.json": [
+      {
+        "value": {"compilerOptions": {"jsx": "react"}}
+      }
+    ],
+    ".swcrc": [
+      {
+        "value": {"jsc": {"parser": {"tsx": true}}}
+      }
+    ]
+  }
+}

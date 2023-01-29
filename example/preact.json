@@ -1,0 +1,23 @@
+{
+  "patches": {
+    "tsconfig.base.json": [
+      {
+        "value": {
+          "compilerOptions": {"jsx": "react-jsx", "jsxImportSource": "preact"}
+        }
+      }
+    ],
+    ".swcrc": [
+      {
+        "value": {
+          "jsc": {
+            "parser": {"tsx": true},
+            "transform": {
+              "react": {"importSource": "preact", "runtime": "automatic"}
+            }
+          }
+        }
+      }
+    ]
+  }
+}
