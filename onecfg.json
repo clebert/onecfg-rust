@@ -3,9 +3,7 @@
     "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/editorconfig.json",
     "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/git.json",
     "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/prettier.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/rust-analyzer.json",
     "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/rust.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/rustfmt.json",
     "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/vscode.json"
   ]
 }

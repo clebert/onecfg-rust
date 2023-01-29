@@ -1,8 +1,45 @@
 {
+  "defines": {
+    "rustfmt.toml": {"format": "toml"}
+  },
   "patches": {
+    "rustfmt.toml": [
+      {
+        "value": {"max_width": 120, "use_small_heuristics": "max"}
+      }
+    ],
+    ".editorconfig": [
+      {
+        "value": {
+          "*.rs": {"indent_size": 4}
+        }
+      }
+    ],
     ".gitignore": [
       {
-        "value": ["/target"]
+        "value": ["/rustfmt.toml", "/target"]
+      }
+    ],
+    ".vscode/extensions.json": [
+      {
+        "value": {"recommendations": ["rust-lang.rust-analyzer"]}
+      }
+    ],
+    ".vscode/settings.json": [
+      {
+        "value": {
+          "[rust]": {"editor.defaultFormatter": "rust-lang.rust-analyzer"},
+          "editor.formatOnSave": true,
+          "editor.rulers": [120],
+          "rust-analyzer.check.allTargets": true,
+          "rust-analyzer.check.command": "clippy",
+          "rust-analyzer.check.features": "all",
+          "rust-analyzer.checkOnSave": true,
+          "rust-analyzer.inlayHints.chainingHints.enable": false,
+          "rust-analyzer.inlayHints.closingBraceHints.enable": false,
+          "rust-analyzer.inlayHints.parameterHints.enable": false,
+          "rust-analyzer.inlayHints.typeHints.enable": false
+        }
       }
     ]
   }
