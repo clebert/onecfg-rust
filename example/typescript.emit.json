@@ -1,0 +1,38 @@
+{
+  "defines": {
+    "tsconfig.emit.json": {"format": "json"}
+  },
+  "patches": {
+    "tsconfig.emit.json": [
+      {
+        "value": {
+          "extends": "./tsconfig.base.json",
+          "include": ["src/**/*"],
+          "compilerOptions": {
+            "rootDir": "src",
+            "declaration": true,
+            "inlineSources": true,
+            "outDir": "lib",
+            "sourceMap": true,
+            "incremental": true
+          }
+        }
+      }
+    ],
+    "tsconfig.json": [
+      {
+        "value": {"exclude": ["lib"]}
+      }
+    ],
+    ".gitignore": [
+      {
+        "value": ["/lib", "/tsconfig.emit.json", "/tsconfig.emit.tsbuildinfo"]
+      }
+    ],
+    ".prettierignore": [
+      {
+        "value": ["/lib", "/tsconfig.emit.json"]
+      }
+    ]
+  }
+}

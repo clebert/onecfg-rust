@@ -1,0 +1,65 @@
+{
+  "defines": {
+    "tsconfig.base.json": {"format": "json"},
+    "tsconfig.json": {"format": "json"}
+  },
+  "patches": {
+    "tsconfig.base.json": [
+      {
+        "value": {
+          "compilerOptions": {
+            "allowUnreachableCode": false,
+            "allowUnusedLabels": false,
+            "noFallthroughCasesInSwitch": true,
+            "noImplicitOverride": true,
+            "noImplicitReturns": true,
+            "noUncheckedIndexedAccess": true,
+            "noUnusedLocals": true,
+            "noUnusedParameters": true,
+            "strict": true,
+            "module": "node16",
+            "moduleResolution": "node16",
+            "importsNotUsedAsValues": "error",
+            "esModuleInterop": true,
+            "forceConsistentCasingInFileNames": true,
+            "isolatedModules": true,
+            "target": "es2022",
+            "noErrorTruncation": true,
+            "pretty": true
+          }
+        }
+      }
+    ],
+    "tsconfig.json": [
+      {
+        "value": {
+          "extends": "./tsconfig.base.json",
+          "include": ["**/*"],
+          "compilerOptions": {
+            "resolveJsonModule": true,
+            "noEmit": true,
+            "checkJs": true
+          }
+        }
+      }
+    ],
+    ".gitignore": [
+      {
+        "value": ["/tsconfig.base.json", "/tsconfig.json"]
+      }
+    ],
+    ".prettierignore": [
+      {
+        "value": ["/tsconfig.base.json", "/tsconfig.json"]
+      }
+    ],
+    ".vscode/settings.json": [
+      {
+        "value": {
+          "editor.codeActionsOnSave": {"source.addMissingImports": true},
+          "typescript.tsdk": "node_modules/typescript/lib"
+        }
+      }
+    ]
+  }
+}
