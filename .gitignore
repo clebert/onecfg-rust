@@ -1,1 +1,7 @@
-target
+/.editorconfig
+/.prettierignore
+/.prettierrc.json
+/.vscode/extensions.json
+/.vscode/settings.json
+/rustfmt.toml
+/target
