@@ -1,0 +1,22 @@
+{
+  "defines": {
+    "rustfmt.toml": {"format": "toml"}
+  },
+  "patches": {
+    "rustfmt.toml": [
+      {
+        "value": {"max_width": 120, "use_small_heuristics": "max"}
+      }
+    ],
+    ".vscode/settings.json": [
+      {
+        "value": {"editor.formatOnSave": true, "editor.rulers": [120]}
+      }
+    ],
+    ".gitignore": [
+      {
+        "value": ["/rustfmt.toml"]
+      }
+    ]
+  }
+}

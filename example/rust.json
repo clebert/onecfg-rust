@@ -1,0 +1,9 @@
+{
+  "patches": {
+    ".gitignore": [
+      {
+        "value": ["/target"]
+      }
+    ]
+  }
+}

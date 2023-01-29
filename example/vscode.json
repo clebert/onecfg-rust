@@ -1,0 +1,23 @@
+{
+  "defines": {
+    ".vscode/extensions.json": {"format": "json"},
+    ".vscode/settings.json": {"format": "json"}
+  },
+  "patches": {
+    ".vscode/extensions.json": [
+      {
+        "value": {"recommendations": []}
+      }
+    ],
+    ".gitignore": [
+      {
+        "value": ["/.vscode/extensions.json", "/.vscode/settings.json"]
+      }
+    ],
+    ".prettierignore": [
+      {
+        "value": ["/.vscode/extensions.json", "/.vscode/settings.json"]
+      }
+    ]
+  }
+}
