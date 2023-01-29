@@ -1,4 +1,4 @@
-pub fn serialize(value: &serde_json::Value) -> Option<String> {
+pub fn to_string_pretty(value: &serde_json::Value) -> Option<String> {
     if let serde_json::Value::Array(array) = value {
         let mut lines = vec![];
 
@@ -29,17 +29,21 @@ pub fn serialize(value: &serde_json::Value) -> Option<String> {
 }
 
 #[test]
-fn serialize_some() {
-    assert_eq!(serialize(&serde_json::json!([])), Some(String::new()));
-    assert_eq!(serialize(&serde_json::json!(["", ""])), Some(String::new()));
-    assert_eq!(serialize(&serde_json::json!([" ", " "])), Some(String::new()));
-    assert_eq!(serialize(&serde_json::json!(["foo", "bar", "baz"])), Some("bar\nbaz\nfoo\n".to_owned()));
-    assert_eq!(serialize(&serde_json::json!([" foo ", " bar ", " baz "])), Some("bar\nbaz\nfoo\n".to_owned()));
-    assert_eq!(serialize(&serde_json::json!(["\nfoo\n", "\nbar\n", "\nbaz\n"])), Some("bar\nbaz\nfoo\n".to_owned()));
+fn to_string_pretty_some() {
+    assert_eq!(to_string_pretty(&serde_json::json!([])), Some(String::new()));
+    assert_eq!(to_string_pretty(&serde_json::json!(["", ""])), Some(String::new()));
+    assert_eq!(to_string_pretty(&serde_json::json!([" ", " "])), Some(String::new()));
+    assert_eq!(to_string_pretty(&serde_json::json!(["foo", "bar", "baz"])), Some("bar\nbaz\nfoo\n".to_owned()));
+    assert_eq!(to_string_pretty(&serde_json::json!([" foo ", " bar ", " baz "])), Some("bar\nbaz\nfoo\n".to_owned()));
+
+    assert_eq!(
+        to_string_pretty(&serde_json::json!(["\nfoo\n", "\nbar\n", "\nbaz\n"])),
+        Some("bar\nbaz\nfoo\n".to_owned())
+    );
 }
 
 #[test]
-fn serialize_none() {
-    assert_eq!(serialize(&serde_json::json!({})), None);
-    assert_eq!(serialize(&serde_json::json!([1])), None);
+fn to_string_pretty_none() {
+    assert_eq!(to_string_pretty(&serde_json::json!({})), None);
+    assert_eq!(to_string_pretty(&serde_json::json!([1])), None);
 }

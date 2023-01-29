@@ -50,29 +50,16 @@ impl Config {
             if let Some(mut file_patches) = self.file_patches_by_path.get(path).map(Clone::clone) {
                 file_patches.sort_by_key(|file_patch| file_patch.priority);
 
-                let mut value = serde_json::json!({});
+                let mut value = file_definition.format.default_value();
 
                 for file_patch in file_patches {
                     crate::json::merge(&mut value, file_patch.value, &file_patch.array_merge);
                 }
 
-                let contents = match file_definition.format {
-                    FileFormat::Editorconfig => toml::to_string_pretty(&value)
-                        .map_err(|_| Error::InvalidPatchValue(path.display().to_string()))?
-                        .replace('\"', ""),
-                    FileFormat::Json => {
-                        let mut string = serde_json::to_string_pretty(&value)
-                            .map_err(|_| Error::InvalidPatchValue(path.display().to_string()))?;
-
-                        string.push('\n');
-
-                        string
-                    }
-                    FileFormat::Text => crate::text::serialize(&value)
-                        .ok_or_else(|| Error::InvalidPatchValue(path.display().to_string()))?,
-                    FileFormat::Toml => toml::to_string_pretty(&value)
-                        .map_err(|_| Error::InvalidPatchValue(path.display().to_string()))?,
-                };
+                let contents = file_definition
+                    .format
+                    .to_string_pretty(&value)
+                    .ok_or_else(|| Error::InvalidPatchValue(path.display().to_string()))?;
 
                 contents_by_path.insert(path.as_path(), contents);
             }
@@ -171,6 +158,30 @@ impl PartialConfig {
         }
 
         Ok(Config { file_definition_by_path, file_patches_by_path })
+    }
+}
+
+impl FileFormat {
+    fn default_value(&self) -> serde_json::Value {
+        match self {
+            Self::Text => serde_json::json!([]),
+            _ => serde_json::json!({}),
+        }
+    }
+
+    fn to_string_pretty(&self, value: &serde_json::Value) -> Option<String> {
+        Some(match self {
+            Self::Editorconfig => toml::to_string_pretty(value).ok()?.replace('\"', ""),
+            Self::Json => {
+                let mut string = serde_json::to_string_pretty(value).ok()?;
+
+                string.push('\n');
+
+                string
+            }
+            Self::Text => crate::text::to_string_pretty(value)?,
+            Self::Toml => toml::to_string_pretty(value).ok()?,
+        })
     }
 }
 
