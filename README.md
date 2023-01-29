@@ -2,6 +2,12 @@
 
 One config file to generate them all.
 
+## Installation
+
+```
+cargo install onecfg
+```
+
 ## License
 
 Licensed under either of
