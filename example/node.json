@@ -1,0 +1,28 @@
+{
+  "defines": {
+    ".node-version": {"format": "text"}
+  },
+  "patches": {
+    ".node-version": [
+      {
+        "value": ["18"],
+        "array_merge": "replace"
+      }
+    ],
+    ".gitignore": [
+      {
+        "value": ["/node_modules"]
+      }
+    ],
+    ".prettierignore": [
+      {
+        "value": ["/package-lock.json"]
+      }
+    ],
+    ".vscode/extensions.json": [
+      {
+        "value": {"recommendations": ["eg2.vscode-npm-script"]}
+      }
+    ]
+  }
+}
