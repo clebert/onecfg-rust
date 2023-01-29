@@ -1,6 +1,6 @@
 {
   "defines": {
-    ".editorconfig": { "format": "editorconfig" }
+    ".editorconfig": {"format": "editorconfig"}
   },
   "patches": {
     ".editorconfig": [
@@ -25,12 +25,12 @@
     ],
     ".vscode/extensions.json": [
       {
-        "value": { "recommendations": ["editorconfig.editorconfig"] }
+        "value": {"recommendations": ["editorconfig.editorconfig"]}
       }
     ],
     ".vscode/settings.json": [
       {
-        "value": { "editor.formatOnSave": true }
+        "value": {"editor.formatOnSave": true}
       }
     ]
   }
