@@ -8,14 +8,21 @@
         "value": {"max_width": 120, "use_small_heuristics": "max"}
       }
     ],
-    ".vscode/settings.json": [
+    ".editorconfig": [
       {
-        "value": {"editor.formatOnSave": true, "editor.rulers": [120]}
+        "value": {
+          "*.rs": {"indent_size": 4}
+        }
       }
     ],
     ".gitignore": [
       {
         "value": ["/rustfmt.toml"]
+      }
+    ],
+    ".vscode/settings.json": [
+      {
+        "value": {"editor.formatOnSave": true, "editor.rulers": [120]}
       }
     ]
   }
