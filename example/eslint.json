@@ -70,14 +70,14 @@
         }
       }
     ],
-    ".prettierignore": [
-      {
-        "value": ["/.eslintrc.json"]
-      }
-    ],
     ".gitignore": [
       {
         "value": ["/.eslintignore", "/.eslintrc.json"]
+      }
+    ],
+    ".prettierignore": [
+      {
+        "value": ["/.eslintrc.json"]
       }
     ],
     ".vscode/extensions.json": [

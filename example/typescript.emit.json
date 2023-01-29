@@ -24,6 +24,11 @@
         "value": {"exclude": ["lib"]}
       }
     ],
+    ".eslintignore": [
+      {
+        "value": ["/lib"]
+      }
+    ],
     ".gitignore": [
       {
         "value": ["/lib", "/tsconfig.emit.json", "/tsconfig.emit.tsbuildinfo"]

@@ -43,6 +43,21 @@
         }
       }
     ],
+    "jest.config.json": [
+      {
+        "value": {
+          "extensionsToTreatAsEsm": [".ts", ".tsx"],
+          "moduleNameMapper": {"^(\\.{1,2}/.*)\\.js$": "$1"},
+          "transform": {"^.+\\.tsx?$": ["@swc/jest"]}
+        }
+      },
+      {
+        "value": {
+          "testMatch": ["**/src/**/*.test.{ts,tsx}"],
+          "array_merge": "replace"
+        }
+      }
+    ],
     ".gitignore": [
       {
         "value": ["/tsconfig.base.json", "/tsconfig.json"]
@@ -51,6 +66,11 @@
     ".prettierignore": [
       {
         "value": ["/tsconfig.base.json", "/tsconfig.json"]
+      }
+    ],
+    ".swcrc": [
+      {
+        "value": {"jsc": {"parser": {"syntax": "typescript"}}}
       }
     ],
     ".vscode/settings.json": [

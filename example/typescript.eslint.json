@@ -11,11 +11,6 @@
         }
       }
     ],
-    ".eslintignore": [
-      {
-        "value": ["/lib"]
-      }
-    ],
     ".eslintrc.json": [
       {
         "value": {
