@@ -21,6 +21,11 @@
         }
       }
     ],
+    "tsconfig.json": [
+      {
+        "value": {"exclude": ["coverage"]}
+      }
+    ],
     ".gitignore": [
       {
         "value": ["/coverage"]
