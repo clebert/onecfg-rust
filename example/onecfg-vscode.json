@@ -9,6 +9,19 @@
         "value": {"recommendations": []}
       }
     ],
+    ".vscode/settings.json": [
+      {
+        "value": {
+          "json.schemaDownload.enable": true,
+          "json.schemas": [
+            {
+              "fileMatch": ["onecfg*.json"],
+              "url": "https://raw.githubusercontent.com/clebert/onecfg-rust/main/schema.json"
+            }
+          ]
+        }
+      }
+    ],
     ".prettierignore": [
       {
         "value": ["/.vscode/extensions.json", "/.vscode/settings.json"]

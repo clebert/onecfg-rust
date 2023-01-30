@@ -12,36 +12,14 @@ cargo install onecfg
 
 ### Create a config file (e.g. `onecfg.json`)
 
-#### Rust project
-
 ```json
 {
   "extends": [
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/editorconfig.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/git.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/prettier.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/rust.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/vscode.json"
-  ]
-}
-```
-
-#### TypeScript project
-
-```json
-{
-  "extends": [
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/editorconfig.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/eslint.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/git.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/jest.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/node.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/prettier.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/swc.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/typescript.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/typescript.emit.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/typescript.eslint.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/vscode.json"
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/onecfg-editorconfig.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/onecfg-git.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/onecfg-prettier.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/onecfg-rust.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/onecfg-vscode.json"
   ]
 }
 ```

@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "properties": {
+    "extends": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "uniqueItems": true
+    },
+    "defines": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "format": {
+            "enum": ["editorconfig", "json", "text", "toml"]
+          }
+        },
+        "required": ["format"]
+      }
+    },
+    "patches": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "value": {},
+            "array_merge": {
+              "enum": ["append", "append_unique", "replace"]
+            },
+            "priority": {
+              "type": "integer"
+            }
+          },
+          "additionalProperties": false,
+          "required": ["value"]
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

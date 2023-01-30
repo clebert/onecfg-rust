@@ -107,6 +107,7 @@ impl PartialConfig {
 
         for entry in self.defines.take().unwrap_or_default() {
             let (path, file_definition) = entry;
+
             let path = crate::path::normalize(&path)
                 .ok_or_else(|| Error::InvalidDefinitionPath(path.display().to_string()))?;
 
@@ -121,6 +122,7 @@ impl PartialConfig {
 
         for entry in self.patches.take().unwrap_or_default() {
             let (path, mut file_patches) = entry;
+
             let path =
                 crate::path::normalize(&path).ok_or_else(|| Error::InvalidPatchPath(path.display().to_string()))?;
 
