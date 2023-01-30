@@ -10,9 +10,9 @@ cargo install onecfg
 
 ## Usage
 
-### Rust project
+### Create a config file (e.g. `onecfg.json`)
 
-1. Create a config file (e.g. `onecfg.json`) with the following contents:
+#### Rust project
 
 ```json
 {
@@ -26,7 +26,27 @@ cargo install onecfg
 }
 ```
 
-2. Run **onecfg**:
+#### TypeScript project
+
+```json
+{
+  "extends": [
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/editorconfig.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/eslint.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/git.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/jest.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/node.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/prettier.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/swc.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/typescript.emit.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/typescript.eslint.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/typescript.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/vscode.json"
+  ]
+}
+```
+
+### Run onecfg
 
 ```
 onecfg onecfg.json
