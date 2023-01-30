@@ -34,6 +34,15 @@
     80,
     120
   ],
+  "json.schemaDownload.enable": true,
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "onecfg*.json"
+      ],
+      "url": "https://raw.githubusercontent.com/clebert/onecfg-rust/main/schema.json"
+    }
+  ],
   "rust-analyzer.check.allTargets": true,
   "rust-analyzer.check.command": "clippy",
   "rust-analyzer.check.features": "all",
