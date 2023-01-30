@@ -26,6 +26,11 @@
         "value": {"exclude": ["coverage"]}
       }
     ],
+    ".eslintignore": [
+      {
+        "value": ["/coverage"]
+      }
+    ],
     ".gitignore": [
       {
         "value": ["/coverage"]
