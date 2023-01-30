@@ -21,11 +21,6 @@
         "value": ["/.prettierrc.json"]
       }
     ],
-    ".gitignore": [
-      {
-        "value": ["/.prettierignore", "/.prettierrc.json"]
-      }
-    ],
     ".vscode/extensions.json": [
       {
         "value": {

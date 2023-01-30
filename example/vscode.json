@@ -9,11 +9,6 @@
         "value": {"recommendations": []}
       }
     ],
-    ".gitignore": [
-      {
-        "value": ["/.vscode/extensions.json", "/.vscode/settings.json"]
-      }
-    ],
     ".prettierignore": [
       {
         "value": ["/.vscode/extensions.json", "/.vscode/settings.json"]

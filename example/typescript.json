@@ -58,11 +58,6 @@
         "priority": 1
       }
     ],
-    ".gitignore": [
-      {
-        "value": ["/tsconfig.base.json", "/tsconfig.json"]
-      }
-    ],
     ".prettierignore": [
       {
         "value": ["/tsconfig.base.json", "/tsconfig.json"]

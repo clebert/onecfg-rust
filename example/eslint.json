@@ -70,11 +70,6 @@
         }
       }
     ],
-    ".gitignore": [
-      {
-        "value": ["/.eslintignore", "/.eslintrc.json"]
-      }
-    ],
     ".prettierignore": [
       {
         "value": ["/.eslintrc.json"]

@@ -45,11 +45,6 @@
         }
       }
     ],
-    ".gitignore": [
-      {
-        "value": ["/tsconfig.eslint.json"]
-      }
-    ],
     ".prettierignore": [
       {
         "value": ["/tsconfig.eslint.json"]

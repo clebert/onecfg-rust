@@ -12,11 +12,6 @@
         }
       }
     ],
-    ".gitignore": [
-      {
-        "value": ["/.swcrc"]
-      }
-    ],
     ".prettierignore": [
       {
         "value": ["/.swcrc"]

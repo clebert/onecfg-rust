@@ -23,7 +23,7 @@
     ],
     ".gitignore": [
       {
-        "value": ["/coverage", "/jest.config.json"]
+        "value": ["/coverage"]
       }
     ],
     ".prettierignore": [
