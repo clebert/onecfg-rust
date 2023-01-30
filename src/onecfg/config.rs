@@ -48,7 +48,7 @@ impl Config {
             let (path, file_definition) = entry;
 
             if let Some(mut file_patches) = self.file_patches_by_path.get(path).map(Clone::clone) {
-                file_patches.sort_by_key(|file_patch| file_patch.priority);
+                file_patches.sort_by(|a, b| a.priority.cmp(&b.priority));
 
                 let mut value = file_definition.format.default_value();
 
