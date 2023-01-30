@@ -38,9 +38,9 @@ cargo install onecfg
     "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/node.json",
     "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/prettier.json",
     "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/swc.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/typescript.json",
     "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/typescript.emit.json",
     "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/typescript.eslint.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/typescript.json",
     "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/vscode.json"
   ]
 }
