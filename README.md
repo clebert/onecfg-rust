@@ -8,6 +8,30 @@ One config file to generate them all.
 cargo install onecfg
 ```
 
+## Usage
+
+### Rust project
+
+1. Create a config file (e.g. `onecfg.json`) with the following contents:
+
+```json
+{
+  "extends": [
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/editorconfig.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/git.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/prettier.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/rust.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/vscode.json"
+  ]
+}
+```
+
+2. Run **onecfg**:
+
+```
+onecfg onecfg.json
+```
+
 ## License
 
 Licensed under either of
