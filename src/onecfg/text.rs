@@ -14,8 +14,6 @@ pub fn to_string_pretty(value: &serde_json::Value) -> Option<String> {
             }
         }
 
-        lines.sort_unstable();
-
         let mut text = lines.join("\n");
 
         if !text.is_empty() {
@@ -33,12 +31,12 @@ fn to_string_pretty_some() {
     assert_eq!(to_string_pretty(&serde_json::json!([])), Some(String::new()));
     assert_eq!(to_string_pretty(&serde_json::json!(["", ""])), Some(String::new()));
     assert_eq!(to_string_pretty(&serde_json::json!([" ", " "])), Some(String::new()));
-    assert_eq!(to_string_pretty(&serde_json::json!(["foo", "bar", "baz"])), Some("bar\nbaz\nfoo\n".to_owned()));
-    assert_eq!(to_string_pretty(&serde_json::json!([" foo ", " bar ", " baz "])), Some("bar\nbaz\nfoo\n".to_owned()));
+    assert_eq!(to_string_pretty(&serde_json::json!(["foo", "bar", "baz"])), Some("foo\nbar\nbaz\n".to_owned()));
+    assert_eq!(to_string_pretty(&serde_json::json!([" foo ", " bar ", " baz "])), Some("foo\nbar\nbaz\n".to_owned()));
 
     assert_eq!(
         to_string_pretty(&serde_json::json!(["\nfoo\n", "\nbar\n", "\nbaz\n"])),
-        Some("bar\nbaz\nfoo\n".to_owned())
+        Some("foo\nbar\nbaz\n".to_owned())
     );
 }
 
