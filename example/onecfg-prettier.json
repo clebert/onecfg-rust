@@ -21,6 +21,11 @@
         "value": ["/.prettierrc.json"]
       }
     ],
+    ".eslintrc.json": [
+      {
+        "value": {"extends": ["prettier"]}
+      }
+    ],
     ".vscode/extensions.json": [
       {
         "value": {
