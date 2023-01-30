@@ -12,6 +12,9 @@ cargo install onecfg
 
 ### Create a config file (e.g. `onecfg.json`)
 
+Predefined [config files](https://github.com/clebert/onecfg-lib) can be used for
+a quick start:
+
 ```json
 {
   "extends": [
