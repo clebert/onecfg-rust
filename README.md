@@ -15,11 +15,11 @@ cargo install onecfg
 ```json
 {
   "extends": [
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/onecfg-editorconfig.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/onecfg-git.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/onecfg-prettier.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/onecfg-rust.json",
-    "https://raw.githubusercontent.com/clebert/onecfg-rust/main/example/onecfg-vscode.json"
+    "https://raw.githubusercontent.com/clebert/onecfg-lib/main/lib/onecfg-editorconfig.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-lib/main/lib/onecfg-git.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-lib/main/lib/onecfg-prettier.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-lib/main/lib/onecfg-rust.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-lib/main/lib/onecfg-vscode.json"
   ]
 }
 ```
