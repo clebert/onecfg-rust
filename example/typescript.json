@@ -23,6 +23,7 @@
             "esModuleInterop": true,
             "forceConsistentCasingInFileNames": true,
             "isolatedModules": true,
+            "jsx": "react",
             "target": "es2022",
             "noErrorTruncation": true,
             "pretty": true
@@ -52,10 +53,9 @@
         }
       },
       {
-        "value": {
-          "testMatch": ["**/src/**/*.test.{ts,tsx}"],
-          "array_merge": "replace"
-        }
+        "value": {"testMatch": ["**/src/**/*.test.{ts,tsx}"]},
+        "array_merge": "replace",
+        "priority": 1
       }
     ],
     ".gitignore": [
@@ -70,7 +70,7 @@
     ],
     ".swcrc": [
       {
-        "value": {"jsc": {"parser": {"syntax": "typescript"}}}
+        "value": {"jsc": {"parser": {"syntax": "typescript", "tsx": true}}}
       }
     ],
     ".vscode/settings.json": [

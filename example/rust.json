@@ -20,6 +20,11 @@
         "value": ["/rustfmt.toml", "/target"]
       }
     ],
+    ".prettierignore": [
+      {
+        "value": ["/target"]
+      }
+    ],
     ".vscode/extensions.json": [
       {
         "value": {"recommendations": ["rust-lang.rust-analyzer"]}
