@@ -2,7 +2,7 @@
 
 set -Eeuxo pipefail
 
-cargo run --bin onecfg -- onecfg.json
+cargo build --release
 cargo fmt --all -- --check
 cargo clippy --all-targets --all-features
 cargo test
