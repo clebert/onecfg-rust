@@ -1,6 +1,6 @@
 [package]
 name = "onecfg"
-version = "0.3.0"
+version = "0.3.1"
 authors = ["Clemens Akens"]
 edition = "2021"
 description = "One config file to generate them all."
