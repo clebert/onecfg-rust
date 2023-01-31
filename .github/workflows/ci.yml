@@ -5,13 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - run: |
-        rustup set auto-self-update disable
-        rustup toolchain install stable --profile minimal
+    - run: rustup set auto-self-update disable
+    - run: rustup toolchain install stable --profile minimal
     - uses: Swatinem/rust-cache@v2
-    - run: |
-        cargo check
-        cargo test
+    - run: cargo check
+    - run: cargo test
+    - run: cargo fmt --all -- --check
+    - run: cargo clippy --all-targets --all-features
 name: CI
 on:
 - push
