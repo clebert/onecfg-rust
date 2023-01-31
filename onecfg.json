@@ -4,47 +4,7 @@
     "https://raw.githubusercontent.com/clebert/onecfg-lib/main/lib/onecfg-git.json",
     "https://raw.githubusercontent.com/clebert/onecfg-lib/main/lib/onecfg-prettier.json",
     "https://raw.githubusercontent.com/clebert/onecfg-lib/main/lib/onecfg-rust.json",
+    "https://raw.githubusercontent.com/clebert/onecfg-lib/main/lib/onecfg-rust-github.json",
     "https://raw.githubusercontent.com/clebert/onecfg-lib/main/lib/onecfg-vscode.json"
-  ],
-  "defines": {
-    ".github/workflows/ci.yml": {"format": "yaml"}
-  },
-  "patches": {
-    ".github/workflows/ci.yml": [
-      {
-        "value": {
-          "name": "CI",
-          "on": ["push", "pull_request"],
-          "jobs": {
-            "ci": {
-              "runs-on": "ubuntu-latest",
-              "env": {
-                "CARGO_TERM_COLOR": "always"
-              },
-              "steps": [
-                {
-                  "uses": "actions/checkout@v3"
-                },
-                {
-                  "run": "rustup set auto-self-update disable\nrustup toolchain install stable --profile minimal\n"
-                },
-                {
-                  "uses": "Swatinem/rust-cache@v2"
-                },
-                {
-                  "run": "cargo check\ncargo test\n"
-                }
-              ]
-            }
-          }
-        },
-        "priority": -1
-      }
-    ],
-    ".prettierignore": [
-      {
-        "value": ["/.github/workflows/ci.yml"]
-      }
-    ]
-  }
+  ]
 }
