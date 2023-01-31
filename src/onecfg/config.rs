@@ -23,6 +23,7 @@ enum FileFormat {
     Json,
     Text,
     Toml,
+    Yaml,
 }
 
 #[derive(Clone, Debug, serde::Deserialize)]
@@ -183,6 +184,7 @@ impl FileFormat {
             }
             Self::Text => crate::text::to_string_pretty(value)?,
             Self::Toml => toml::to_string_pretty(value).ok()?,
+            Self::Yaml => serde_yaml::to_string(value).ok()?,
         })
     }
 }
