@@ -1,32 +1,33 @@
-name: CI
-'on':
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
 jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Install Rust
-        run: |
-          rustup toolchain install stable --profile minimal --no-self-update
-          rustup default stable
-        shell: bash
-
-      - name: Set environment variables used by toolchain
-        run: |
-          echo CARGO_TERM_COLOR=always >> $GITHUB_ENV
-          echo CARGO_INCREMENTAL=0 >> $GITHUB_ENV
-          echo RUST_BACKTRACE=1 >> $GITHUB_ENV
-          rustc --version --verbose
-        shell: bash
-
-      - name: Run CI checks
-        run: ./ci.sh
-        shell: bash
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Install Rust
+      run: |
+        rustup toolchain install stable --profile minimal --no-self-update
+        rustup default stable
+      shell: bash
+    - name: Set environment variables
+      run: |
+        echo CARGO_TERM_COLOR=always >> $GITHUB_ENV
+        echo CARGO_INCREMENTAL=0 >> $GITHUB_ENV
+        echo RUST_BACKTRACE=1 >> $GITHUB_ENV
+        rustc --version --verbose
+      shell: bash
+    - name: Run CI checks
+      run: |
+        cargo build --release
+        cargo fmt --all -- --check
+        cargo clippy --all-targets --all-features
+        cargo test
+      shell: bash
+name: CI
+on:
+  pull_request:
+    branches:
+    - main
+  push:
+    branches:
+    - main

@@ -5,5 +5,57 @@
     "https://raw.githubusercontent.com/clebert/onecfg-lib/main/lib/onecfg-prettier.json",
     "https://raw.githubusercontent.com/clebert/onecfg-lib/main/lib/onecfg-rust.json",
     "https://raw.githubusercontent.com/clebert/onecfg-lib/main/lib/onecfg-vscode.json"
-  ]
+  ],
+  "defines": {
+    ".github/workflows/ci.yml": {"format": "yaml"}
+  },
+  "patches": {
+    ".github/workflows/ci.yml": [
+      {
+        "value": {
+          "name": "CI",
+          "on": {
+            "push": {
+              "branches": ["main"]
+            },
+            "pull_request": {
+              "branches": ["main"]
+            }
+          },
+          "jobs": {
+            "ci": {
+              "runs-on": "ubuntu-latest",
+              "steps": [
+                {
+                  "name": "Checkout repository",
+                  "uses": "actions/checkout@v2"
+                },
+                {
+                  "name": "Install Rust",
+                  "run": "rustup toolchain install stable --profile minimal --no-self-update\nrustup default stable\n",
+                  "shell": "bash"
+                },
+                {
+                  "name": "Set environment variables",
+                  "run": "echo CARGO_TERM_COLOR=always >> $GITHUB_ENV\necho CARGO_INCREMENTAL=0 >> $GITHUB_ENV\necho RUST_BACKTRACE=1 >> $GITHUB_ENV\nrustc --version --verbose\n",
+                  "shell": "bash"
+                },
+                {
+                  "name": "Run CI checks",
+                  "run": "cargo build --release\ncargo fmt --all -- --check\ncargo clippy --all-targets --all-features\ncargo test\n",
+                  "shell": "bash"
+                }
+              ]
+            }
+          }
+        },
+        "priority": -1
+      }
+    ],
+    ".prettierignore": [
+      {
+        "value": ["/.github/workflows/ci.yml"]
+      }
+    ]
+  }
 }

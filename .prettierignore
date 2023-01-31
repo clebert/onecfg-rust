@@ -1,3 +1,4 @@
+/.github/workflows/ci.yml
 /.prettierrc.json
 /.vscode/extensions.json
 /.vscode/settings.json
