@@ -1,8 +1,8 @@
 {
   "recommendations": [
-    "bodil.prettier-toml",
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
+    "bodil.prettier-toml",
     "rust-lang.rust-analyzer"
   ]
 }

@@ -1,14 +1,14 @@
 #[derive(Debug)]
 pub struct Config {
-    file_definition_by_path: std::collections::HashMap<std::path::PathBuf, FileDefinition>,
-    file_patches_by_path: std::collections::HashMap<std::path::PathBuf, Vec<FilePatch>>,
+    file_definition_by_path: indexmap::IndexMap<std::path::PathBuf, FileDefinition>,
+    file_patches_by_path: indexmap::IndexMap<std::path::PathBuf, Vec<FilePatch>>,
 }
 
 #[derive(Debug, serde::Deserialize)]
 struct PartialConfig {
-    extends: Option<std::collections::HashSet<String>>,
-    defines: Option<std::collections::HashMap<std::path::PathBuf, FileDefinition>>,
-    patches: Option<std::collections::HashMap<std::path::PathBuf, Vec<FilePatch>>>,
+    extends: Option<indexmap::IndexSet<String>>,
+    defines: Option<indexmap::IndexMap<std::path::PathBuf, FileDefinition>>,
+    patches: Option<indexmap::IndexMap<std::path::PathBuf, Vec<FilePatch>>>,
 }
 
 #[derive(Debug, serde::Deserialize)]
@@ -42,8 +42,8 @@ pub fn load(path: &std::path::Path) -> Result<Config, Error> {
 
 impl Config {
     /// # Errors
-    pub fn generate_contents(&self) -> Result<std::collections::HashMap<&std::path::Path, String>, Error> {
-        let mut contents_by_path = std::collections::HashMap::new();
+    pub fn generate_contents(&self) -> Result<indexmap::IndexMap<&std::path::Path, String>, Error> {
+        let mut contents_by_path = indexmap::IndexMap::new();
 
         for entry in &self.file_definition_by_path {
             let (path, file_definition) = entry;
@@ -105,9 +105,9 @@ impl PartialConfig {
 
     /// # Errors
     fn load(&mut self) -> Result<Config, Error> {
-        use std::collections::HashMap;
+        use indexmap::IndexMap;
 
-        let mut file_definition_by_path = HashMap::new();
+        let mut file_definition_by_path = IndexMap::new();
 
         for entry in self.defines.take().unwrap_or_default() {
             let (path, file_definition) = entry;
@@ -122,7 +122,7 @@ impl PartialConfig {
             file_definition_by_path.insert(path, file_definition);
         }
 
-        let mut file_patches_by_path: HashMap<std::path::PathBuf, Vec<FilePatch>> = HashMap::new();
+        let mut file_patches_by_path: IndexMap<std::path::PathBuf, Vec<FilePatch>> = IndexMap::new();
 
         for entry in self.patches.take().unwrap_or_default() {
             let (path, mut file_patches) = entry;
