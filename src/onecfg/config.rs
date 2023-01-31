@@ -73,10 +73,13 @@ impl Config {
 impl PartialConfig {
     /// # Errors
     fn with_path(path: &std::path::Path) -> Result<Self, Error> {
-        let file = std::fs::File::open(path).map_err(|_| Error::ConfigFileNotFound(path.display().to_string()))?;
+        let file = std::fs::File::open(path)
+            .map_err(|source| Error::FailedToReadConfigFile(path.display().to_string(), source))?;
+
         let reader = std::io::BufReader::new(file);
 
-        serde_json::from_reader(reader).map_err(|_| Error::InvalidConfigFile(path.display().to_string()))
+        serde_json::from_reader(reader)
+            .map_err(|source| Error::FailedToParseConfigFile(path.display().to_string(), source))
     }
 
     /// # Errors
@@ -84,11 +87,11 @@ impl PartialConfig {
         if url.starts_with("https://") {
             Ok(serde_json::from_str(
                 &reqwest::blocking::get(url)
-                    .map_err(|_| Error::ConfigFileNotFound(url.to_owned()))?
+                    .map_err(|source| Error::FailedToDownloadConfigFile(url.to_owned(), source))?
                     .text()
-                    .map_err(|_| Error::InvalidConfigFile(url.to_owned()))?,
+                    .map_err(|source| Error::FailedToDownloadConfigFile(url.to_owned(), source))?,
             )
-            .map_err(|_| Error::InvalidConfigFile(url.to_owned()))?)
+            .map_err(|source| Error::FailedToParseConfigFile(url.to_owned(), source))?)
         } else if let Some(path) = url.split("file://").nth(1).map(std::path::Path::new) {
             if path.is_absolute() {
                 Self::with_path(path)
@@ -189,35 +192,32 @@ impl FileFormat {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, thiserror::Error)]
 pub enum Error {
-    ConfigFileNotFound(String),
-    InvalidConfigFile(String),
+    #[error("failed to read config file '{0}'")]
+    FailedToReadConfigFile(String, #[source] std::io::Error),
+
+    #[error("failed to download config file '{0}'")]
+    FailedToDownloadConfigFile(String, #[source] reqwest::Error),
+
+    #[error("failed to parse config file '{0}'")]
+    FailedToParseConfigFile(String, #[source] serde_json::Error),
+
+    #[error("relative file URL '{0}'")]
     RelativeFileUrl(String),
+
+    #[error("unknown URL scheme '{0}'")]
     UnknownUrlScheme(String),
+
+    #[error("invalid definition path '{0}'")]
     InvalidDefinitionPath(String),
+
+    #[error("duplicate definition '{0}'")]
     DuplicateDefinition(String),
+
+    #[error("invalid patch path '{0}'")]
     InvalidPatchPath(String),
+
+    #[error("invalid patch value for definition '{0}'")]
     InvalidPatchValue(String),
-}
-
-impl std::fmt::Display for Error {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
-            Self::ConfigFileNotFound(m) => write!(f, "Config file not found '{m}'"),
-            Self::InvalidConfigFile(m) => write!(f, "Invalid config file '{m}'"),
-            Self::RelativeFileUrl(m) => write!(f, "Relative file URL '{m}'"),
-            Self::UnknownUrlScheme(m) => write!(f, "Unknown URL scheme '{m}'"),
-            Self::InvalidDefinitionPath(m) => write!(f, "Invalid definition path '{m}'"),
-            Self::DuplicateDefinition(m) => write!(f, "Duplicate definition '{m}'"),
-            Self::InvalidPatchPath(m) => write!(f, "Invalid patch path '{m}'"),
-            Self::InvalidPatchValue(m) => write!(f, "Invalid patch value '{m}'"),
-        }
-    }
-}
-
-impl std::error::Error for Error {
-    fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
-        None
-    }
 }
