@@ -15,7 +15,14 @@
         "type": "object",
         "properties": {
           "format": {
-            "enum": ["editorconfig", "json", "text", "toml", "yaml"]
+            "enum": [
+              "editorconfig",
+              "ignorefile",
+              "json",
+              "text",
+              "toml",
+              "yaml"
+            ]
           }
         },
         "required": ["format"]

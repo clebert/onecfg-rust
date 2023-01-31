@@ -20,6 +20,7 @@ struct FileDefinition {
 #[serde(rename_all = "snake_case")]
 enum FileFormat {
     Editorconfig,
+    Ignorefile,
     Json,
     Text,
     Toml,
@@ -178,6 +179,7 @@ impl FileFormat {
     fn to_string_pretty(&self, value: &serde_json::Value) -> Option<String> {
         Some(match self {
             Self::Editorconfig => toml::to_string_pretty(value).ok()?.replace('\"', ""),
+            Self::Ignorefile => crate::text::to_string_pretty(value, true)?,
             Self::Json => {
                 let mut string = serde_json::to_string_pretty(value).ok()?;
 
@@ -185,7 +187,7 @@ impl FileFormat {
 
                 string
             }
-            Self::Text => crate::text::to_string_pretty(value)?,
+            Self::Text => crate::text::to_string_pretty(value, false)?,
             Self::Toml => toml::to_string_pretty(value).ok()?,
             Self::Yaml => serde_yaml::to_string(value).ok()?,
         })
