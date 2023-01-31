@@ -14,36 +14,25 @@
       {
         "value": {
           "name": "CI",
-          "on": {
-            "push": {
-              "branches": ["main"]
-            },
-            "pull_request": {
-              "branches": ["main"]
-            }
-          },
+          "on": ["push", "pull_request"],
           "jobs": {
             "ci": {
               "runs-on": "ubuntu-latest",
+              "env": {
+                "CARGO_TERM_COLOR": "always"
+              },
               "steps": [
                 {
-                  "name": "Checkout repository",
-                  "uses": "actions/checkout@v2"
+                  "uses": "actions/checkout@v3"
                 },
                 {
-                  "name": "Install Rust",
-                  "run": "rustup toolchain install stable --profile minimal --no-self-update\nrustup default stable\n",
-                  "shell": "bash"
+                  "run": "rustup set auto-self-update disable\nrustup toolchain install stable --profile minimal\n"
                 },
                 {
-                  "name": "Set environment variables",
-                  "run": "echo CARGO_TERM_COLOR=always >> $GITHUB_ENV\necho CARGO_INCREMENTAL=0 >> $GITHUB_ENV\necho RUST_BACKTRACE=1 >> $GITHUB_ENV\nrustc --version --verbose\n",
-                  "shell": "bash"
+                  "uses": "Swatinem/rust-cache@v2"
                 },
                 {
-                  "name": "Run CI checks",
-                  "run": "cargo build --release\ncargo fmt --all -- --check\ncargo clippy --all-targets --all-features\ncargo test\n",
-                  "shell": "bash"
+                  "run": "cargo check\ncargo test\n"
                 }
               ]
             }

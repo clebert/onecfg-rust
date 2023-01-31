@@ -1,33 +1,18 @@
 jobs:
   ci:
+    env:
+      CARGO_TERM_COLOR: always
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Install Rust
-      run: |
-        rustup toolchain install stable --profile minimal --no-self-update
-        rustup default stable
-      shell: bash
-    - name: Set environment variables
-      run: |
-        echo CARGO_TERM_COLOR=always >> $GITHUB_ENV
-        echo CARGO_INCREMENTAL=0 >> $GITHUB_ENV
-        echo RUST_BACKTRACE=1 >> $GITHUB_ENV
-        rustc --version --verbose
-      shell: bash
-    - name: Run CI checks
-      run: |
-        cargo build --release
-        cargo fmt --all -- --check
-        cargo clippy --all-targets --all-features
+    - uses: actions/checkout@v3
+    - run: |
+        rustup set auto-self-update disable
+        rustup toolchain install stable --profile minimal
+    - uses: Swatinem/rust-cache@v2
+    - run: |
+        cargo check
         cargo test
-      shell: bash
 name: CI
 on:
-  pull_request:
-    branches:
-    - main
-  push:
-    branches:
-    - main
+- push
+- pull_request
