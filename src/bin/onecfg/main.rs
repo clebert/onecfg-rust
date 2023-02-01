@@ -3,27 +3,27 @@
 
 #[derive(clap::Parser, Debug)]
 #[command(version)]
-pub struct Onecfg {
+pub struct Args {
     #[arg()]
-    config_path: std::path::PathBuf,
+    file_path: std::path::PathBuf,
 }
 
 fn main() -> anyhow::Result<()> {
     use anyhow::Context;
     use clap::Parser;
 
-    let args = Onecfg::parse();
-    let config = onecfg::config::load(&args.config_path).context("Failed to load config file")?;
-    let contents_by_path = config.generate_contents().context("Failed to generate contents")?;
+    let args = Args::parse();
+    let onecfg = onecfg::load(&args.file_path).context("Failed to load onecfg file")?;
+    let config_by_path = onecfg.generate_configs().context("Failed to generate configs")?;
 
-    for entry in contents_by_path {
-        let (path, contents) = entry;
+    for entry in config_by_path {
+        let (path, config) = entry;
 
         if let Some(parent_path) = path.parent() {
             std::fs::create_dir_all(parent_path)?;
         }
 
-        std::fs::write(path, contents).with_context(|| format!("Failed to write file '{}'", path.display()))?;
+        std::fs::write(path, config).with_context(|| format!("Failed to write config file '{}'", path.display()))?;
     }
 
     Ok(())
