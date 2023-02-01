@@ -10,10 +10,41 @@ cargo install onecfg
 
 ## Usage
 
-### Create a config file (e.g. `onecfg.json`)
+In short, a onecfg file (e.g. `onecfg.json`) allows to automatically generate
+arbitrary config files as follows:
 
-Predefined [config files](https://github.com/clebert/onecfg-lib) can be extended
-for a quick start:
+```
+onecfg onecfg.json
+```
+
+In each onecfg file there can be three different sections. A section for
+defining config files to be generated in their respective format, e.g:
+
+```json
+{
+  "defines": {
+    ".prettierrc.json": {"format": "json"}
+  }
+}
+```
+
+Another section to declare patches that are only applied to explicitly defined
+config files e.g:
+
+```json
+{
+  "patches": {
+    ".prettierrc.json": [
+      {"value": {"printWidth": 80}},
+      {"value": {"singleQuote": true}}
+    ]
+  }
+}
+```
+
+And a section where onecfg files can extend each other. Predefined
+[onecfg files](https://github.com/clebert/onecfg-lib) can be extended for a
+quick start e.g:
 
 ```json
 {
@@ -28,15 +59,9 @@ for a quick start:
 
 _Note: You can use
 [JSON Schema](https://github.com/clebert/onecfg-rust/blob/main/schema.json) to
-validate your config or enable autocompletion in the editor._
+validate your onecfg file or enable autocompletion in the editor._
 
-### Run onecfg
-
-```
-onecfg onecfg.json
-```
-
-## File formats
+## Config formats
 
 ### `text`
 
