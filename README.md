@@ -2,12 +2,13 @@
 
 > One config file to generate them all.
 
-A program for managing config files across multiple projects with the
+A program for managing config files across multiple repositories with the
 flexibility to extend and customize
-[predefined](https://github.com/clebert/onecfg-lib) configurations. The idea is
-that a single config file can be used to control and generate all the necessary
-settings for a repository, reducing the need to manage multiple files or
-manually configure settings each time a project is set up or modified.
+[predefined](https://github.com/clebert/onecfg-lib) configurations.
+
+The idea is that a single config file can be used to control and generate all
+the necessary settings for a repository, reducing the need to manually manage
+multiple files.
 
 ## Installation
 
