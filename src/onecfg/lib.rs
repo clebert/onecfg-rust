@@ -3,6 +3,7 @@
 #![forbid(unsafe_code)]
 
 pub mod config;
+mod ignorefile;
 mod json;
 mod path;
 mod text;

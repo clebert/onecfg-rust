@@ -26,10 +26,108 @@ for a quick start:
 }
 ```
 
+_Note: You can use
+[JSON Schema](https://github.com/clebert/onecfg-rust/blob/main/schema.json) to
+validate your config or enable autocompletion in the editor._
+
 ### Run onecfg
 
 ```
 onecfg onecfg.json
+```
+
+## File formats
+
+### `text`
+
+```json
+{
+  "defines": {
+    "test.txt": {"format": "text"}
+  },
+  "patches": {
+    "test.txt": [{"value": "foo"}, {"value": "bar"}]
+  }
+}
+```
+
+```
+bar
+```
+
+### `json`
+
+```json
+{
+  "defines": {
+    "test.json": {"format": "json"}
+  },
+  "patches": {
+    "test.json": [{"value": {"foo": "bar"}}, {"value": {"baz": "qux"}}]
+  }
+}
+```
+
+```json
+{
+  "baz": "qux",
+  "foo": "bar"
+}
+```
+
+### `toml`
+
+```json
+{
+  "defines": {
+    "test.toml": {"format": "toml"}
+  },
+  "patches": {
+    "test.toml": [{"value": {"foo": "bar"}}, {"value": {"baz": "qux"}}]
+  }
+}
+```
+
+```toml
+baz = "qux"
+foo = "bar"
+```
+
+### `yaml`
+
+```json
+{
+  "defines": {
+    "test.yml": {"format": "yaml"}
+  },
+  "patches": {
+    "test.yml": [{"value": {"foo": "bar"}}, {"value": {"baz": "qux"}}]
+  }
+}
+```
+
+```yaml
+baz: qux
+foo: bar
+```
+
+### `ignorefile`
+
+```json
+{
+  "defines": {
+    ".testignore": {"format": "ignorefile"}
+  },
+  "patches": {
+    ".testignore": [{"value": ["foo", "bar"]}, {"value": ["baz"]}]
+  }
+}
+```
+
+```
+bar
+baz
+foo
 ```
 
 ## License

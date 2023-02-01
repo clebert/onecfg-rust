@@ -60,7 +60,7 @@ impl Config {
 
                 let contents = file_definition
                     .format
-                    .to_string_pretty(&value)
+                    .to_string(&value)
                     .ok_or_else(|| Error::InvalidPatchValue(path.display().to_string()))?;
 
                 contents_by_path.insert(path.as_path(), contents);
@@ -176,10 +176,10 @@ impl FileFormat {
         }
     }
 
-    fn to_string_pretty(&self, value: &serde_json::Value) -> Option<String> {
+    fn to_string(&self, value: &serde_json::Value) -> Option<String> {
         Some(match self {
             Self::Editorconfig => toml::to_string_pretty(value).ok()?.replace('\"', ""),
-            Self::Ignorefile => crate::text::to_string_pretty(value, true)?,
+            Self::Ignorefile => crate::ignorefile::to_string(value)?,
             Self::Json => {
                 let mut string = serde_json::to_string_pretty(value).ok()?;
 
@@ -187,7 +187,7 @@ impl FileFormat {
 
                 string
             }
-            Self::Text => crate::text::to_string_pretty(value, false)?,
+            Self::Text => crate::text::to_string(value)?,
             Self::Toml => toml::to_string_pretty(value).ok()?,
             Self::Yaml => serde_yaml::to_string(value).ok()?,
         })
