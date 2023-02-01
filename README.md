@@ -1,6 +1,10 @@
 # onecfg
 
-One config file to generate them all.
+> One config file to generate them all.
+
+A tool for managing config files across multiple projects with the flexibility
+to use and customize [predefined](https://github.com/clebert/onecfg-lib)
+configurations. It streamlines the process of creating and updating these files.
 
 ## Installation
 
@@ -10,15 +14,14 @@ cargo install onecfg
 
 ## Usage
 
-In short, a onecfg file (e.g. `onecfg.json`) allows to automatically generate
-arbitrary config files as follows:
+In short, a onecfg file (e.g. `onecfg.json`) allows for the automatic generation
+of config files as follows:
 
 ```
 onecfg onecfg.json
 ```
 
-In each onecfg file there can be three different sections. A section for
-defining config files to be generated in their respective format, e.g:
+### Defining the format of the config files to be generated
 
 ```json
 {
@@ -28,8 +31,7 @@ defining config files to be generated in their respective format, e.g:
 }
 ```
 
-Another section to declare patches that are only applied to explicitly defined
-config files e.g:
+### Declaring patches specific to certain config files
 
 ```json
 {
@@ -42,9 +44,7 @@ config files e.g:
 }
 ```
 
-And a section where onecfg files can extend each other. Predefined
-[onecfg files](https://github.com/clebert/onecfg-lib) can be extended for a
-quick start e.g:
+### Extending onecfg files, including using [predefined](https://github.com/clebert/onecfg-lib) ones for convenience
 
 ```json
 {
