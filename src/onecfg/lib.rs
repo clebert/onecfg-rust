@@ -228,6 +228,6 @@ pub enum Error {
     #[error("illegal config patch path '{0}'")]
     IllegalConfigPatchPath(String),
 
-    #[error("invalid config patch value for definition '{0}'")]
+    #[error("invalid config patch value '{0}'")]
     InvalidConfigPatchValue(String),
 }
