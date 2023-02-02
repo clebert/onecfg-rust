@@ -18,7 +18,7 @@
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
   "[toml]": {
-    "editor.defaultFormatter": "bodil.prettier-toml"
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
