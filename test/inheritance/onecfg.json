@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "file://test/inheritance/onecfg-a.json",
+    "file://test/inheritance/onecfg-b.json"
+  ],
+  "defines": {
+    "test.json": {"format": "json"}
+  },
+  "patches": {
+    "test.json": [{"value": [19, 20]}, {"value": [0], "priority": -1}]
+  }
+}

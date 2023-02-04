@@ -1,0 +1,5 @@
+{
+  "patches": {
+    "test.json": [{"value": [10, 11]}, {"value": [12]}]
+  }
+}

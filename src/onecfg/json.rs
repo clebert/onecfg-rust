@@ -36,7 +36,7 @@ pub fn merge(value_1: &mut serde_json::Value, value_2: serde_json::Value, array_
     }
 }
 
-#[derive(Clone, Debug, serde::Deserialize)]
+#[derive(Debug, Clone, serde::Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub enum ArrayMerge {
     Append,

@@ -1,7 +1,7 @@
 #![warn(clippy::all, clippy::pedantic, clippy::nursery, clippy::cargo)]
 #![forbid(unsafe_code)]
 
-#[derive(clap::Parser, Debug)]
+#[derive(Debug, clap::Parser)]
 #[command(version)]
 pub struct Args {
     #[arg()]

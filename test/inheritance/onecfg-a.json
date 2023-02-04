@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "file://test/inheritance/onecfg-aa.json",
+    "file://test/inheritance/onecfg-ab.json"
+  ],
+  "patches": {
+    "test.json": [{"value": [7, 8]}, {"value": [9]}]
+  }
+}
