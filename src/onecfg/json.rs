@@ -4,19 +4,19 @@ pub fn merge(value_1: &mut serde_json::Value, value_2: serde_json::Value, array_
             match array_merge {
                 ArrayMerge::Append => {
                     array_1.append(&mut array_2);
-                }
+                },
                 ArrayMerge::AppendUnique => {
                     for element_2 in array_2 {
                         if !array_1.contains(&element_2) {
                             array_1.push(element_2);
                         }
                     }
-                }
+                },
                 ArrayMerge::Replace => {
                     std::mem::drop(std::mem::replace(array_1, array_2));
-                }
+                },
             };
-        }
+        },
         (serde_json::Value::Object(object_1), serde_json::Value::Object(object_2)) => {
             for entry in object_2 {
                 let (key_2, value_2) = entry;
@@ -29,10 +29,10 @@ pub fn merge(value_1: &mut serde_json::Value, value_2: serde_json::Value, array_
                     object_1.insert(key_2, value_2);
                 }
             }
-        }
+        },
         (value_1, value_2) => {
             std::mem::drop(std::mem::replace(value_1, value_2));
-        }
+        },
     }
 }
 

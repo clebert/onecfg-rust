@@ -8,7 +8,7 @@ pub fn to_string(value: &serde_json::Value) -> Option<String> {
             }
 
             Some(string)
-        }
+        },
         _ => None,
     }
 }

@@ -184,7 +184,7 @@ impl ConfigFormat {
                 string.push('\n');
 
                 string
-            }
+            },
             Self::Text => crate::text::to_string(value)?,
             Self::Toml => toml::to_string_pretty(value).ok()?,
             Self::Yaml => serde_yaml::to_string(value).ok()?,

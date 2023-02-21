@@ -9,7 +9,7 @@ pub fn normalize(path: &std::path::Path) -> Option<std::path::PathBuf> {
                 normalized_path.push(component);
 
                 has_component = true;
-            }
+            },
             _ => return None,
         }
     }
