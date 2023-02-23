@@ -13,7 +13,10 @@ fn main() -> anyhow::Result<()> {
     use clap::Parser;
 
     let args = Args::parse();
-    let onecfg = onecfg::load(&args.file_path).context("Failed to load onecfg file")?;
+
+    let onecfg = onecfg::load(&args.file_path)
+        .with_context(|| format!("Failed to load onecfg file '{}'", args.file_path.display()))?;
+
     let config_by_path = onecfg.generate_configs().context("Failed to generate configs")?;
 
     for entry in config_by_path {
