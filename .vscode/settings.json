@@ -34,6 +34,18 @@
     80,
     120
   ],
+  "files.exclude": {
+    ".editorconfig": true,
+    ".github": true,
+    ".github/workflows/ci.yml": true,
+    ".gitignore": true,
+    ".prettierignore": true,
+    ".prettierrc.json": true,
+    ".vscode": true,
+    ".vscode/extensions.json": true,
+    ".vscode/settings.json": true,
+    "rustfmt.toml": true
+  },
   "json.schemaDownload.enable": true,
   "json.schemas": [
     {
