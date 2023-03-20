@@ -1,4 +1,5 @@
 /.prettierrc.json
+/LICENSE*
 /target
 /.github/workflows/ci.yml
 /.vscode/extensions.json
