@@ -2,15 +2,22 @@
 
 > One config file to generate them all.
 
-A program for managing config files across multiple repositories with the
-flexibility to extend and customize
-[predefined](https://github.com/clebert/onecfg-lib) configurations.
+`onecfg` provides an efficient solution for managing config files in projects
+that use multiple tools with interdependent configurations. It introduces the
+concept of **onecfg files**, which are JSON-based files that store the necessary
+information to generate and customize config files for different tools. These
+onecfg files can be shared, extended, and loaded via HTTPS from any location,
+enabling users to create customized configurations tailored to their specific
+needs.
 
-The idea is that a single config file can be used to control and generate all
-the necessary settings for a repository, reducing the need to manually manage
-multiple files.
+This approach addresses two main challenges: first, it eliminates the repetitive
+nature of config files and reduces the need for manual updates across projects.
+Second, it simplifies the complexity of managing configurations when working
+with a combination of different tools.
 
 ## Installation
+
+You can install `onecfg` using Cargo:
 
 ```
 cargo install onecfg
@@ -18,37 +25,25 @@ cargo install onecfg
 
 ## Usage
 
-In short, a onecfg file (e.g. `onecfg.json`) allows for the automatic generation
-of config files as follows:
+Before you can generate config files with `onecfg`, you'll need to create a
+`onecfg.json` file in your project's root directory. This file will define how
+the config files should be generated, as well as any customizations you'd like
+to make.
+
+To generate the config files, use the following command:
 
 ```
 onecfg onecfg.json
 ```
 
-### Defining the format of the config files to be generated
+To quickly get started with `onecfg`, you can use the
+[`onecfg-lib`](https://github.com/clebert/onecfg-lib) library. It is a
+collection of onecfg files specifically designed to configure TypeScript and
+Rust projects. By extending these predefined onecfg files, you can easily set up
+your project without having to create your own configurations from scratch.
 
-```json
-{
-  "defines": {
-    ".prettierrc.json": {"format": "json"}
-  }
-}
-```
-
-### Declaring patches specific to certain config files
-
-```json
-{
-  "patches": {
-    ".prettierrc.json": [
-      {"value": {"printWidth": 80}},
-      {"value": {"singleQuote": true}}
-    ]
-  }
-}
-```
-
-### Extending onecfg files, including using [predefined](https://github.com/clebert/onecfg-lib) ones for convenience
+To use the `onecfg-lib` library, simply include the desired onecfg files in the
+`extends` section of your project's `onecfg.json` file. For example:
 
 ```json
 {
@@ -61,11 +56,60 @@ onecfg onecfg.json
 }
 ```
 
-_Note: You can use
+In this example, the `onecfg.json` file extends four different onecfg files from
+the `onecfg-lib` library, which are specifically designed for configuring
+EditorConfig, Git, Prettier, and Visual Studio Code. By extending these files,
+your project will be set up with the recommended configuration for each tool.
+
+You can find more onecfg files for TypeScript and Rust projects in the
+[`onecfg-lib` repository](https://github.com/clebert/onecfg-lib).
+
+_Note: You can use the
 [JSON Schema](https://github.com/clebert/onecfg-rust/blob/main/schema.json) to
 validate your onecfg file or enable autocompletion in the editor._
 
+## Defining the format of the config files to be generated
+
+It's important to note that only config files directly or indirectly defined in
+an extended onecfg file can be generated and patched. A config file under a
+specific path should only be defined once across all extended onecfg files.
+
+When extending onecfg files, ensure that there are no conflicting definitions
+for the same file paths. If a conflict occurs, you may need to either modify
+your custom `onecfg.json` file or create a new onecfg file to resolve the issue.
+
+In your `onecfg.json` file, you can define the format of the config files as
+shown below:
+
+```json
+{
+  "defines": {
+    ".gitignore": {"format": "ignorefile"},
+    ".prettierrc.json": {"format": "json"}
+  }
+}
+```
+
+### Declaring patches specific to certain config files
+
+You can declare patches specific to certain config files in your `onecfg.json`
+file:
+
+```json
+{
+  "patches": {
+    ".gitignore": [{"value": ["/dist"]],
+    ".prettierrc.json": [{"value": {"printWidth": 80, "singleQuote": true}}]
+  }
+}
+```
+
 ## Config formats
+
+`onecfg` supports various config formats including `text`, `json`, `toml`,
+`yaml`, and `ignorefile`. You can define the format of a config file in the
+defines section of your onecfg.json file, and provide patches to customize the
+values.
 
 ### `text`
 
