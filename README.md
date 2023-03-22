@@ -68,7 +68,7 @@ _Note: You can use the
 [JSON Schema](https://github.com/clebert/onecfg-rust/blob/main/schema.json) to
 validate your onecfg file or enable autocompletion in the editor._
 
-## Defining the format of the config files to be generated
+### Defining the format of the config files to be generated
 
 In your `onecfg.json` file, you can define the format of the config files as
 shown below:
