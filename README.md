@@ -70,14 +70,6 @@ validate your onecfg file or enable autocompletion in the editor._
 
 ## Defining the format of the config files to be generated
 
-It's important to note that only config files directly or indirectly defined in
-an extended onecfg file can be generated and patched. A config file under a
-specific path should only be defined once across all extended onecfg files.
-
-When extending onecfg files, ensure that there are no conflicting definitions
-for the same file paths. If a conflict occurs, you may need to either modify
-your custom `onecfg.json` file or create a new onecfg file to resolve the issue.
-
 In your `onecfg.json` file, you can define the format of the config files as
 shown below:
 
@@ -90,6 +82,14 @@ shown below:
 }
 ```
 
+It's important to note that only config files directly or indirectly defined in
+an extended onecfg file can be generated and patched. A config file under a
+specific path should only be defined once across all extended onecfg files.
+
+When extending onecfg files, ensure that there are no conflicting definitions
+for the same file paths. If a conflict occurs, you may need to either modify
+your custom `onecfg.json` file or create a new onecfg file to resolve the issue.
+
 ### Declaring patches specific to certain config files
 
 You can declare patches specific to certain config files in your `onecfg.json`
@@ -98,11 +98,18 @@ file:
 ```json
 {
   "patches": {
-    ".gitignore": [{"value": ["/dist"]],
+    ".gitignore": [{"value": ["/dist"]}],
     ".prettierrc.json": [{"value": {"printWidth": 80, "singleQuote": true}}]
   }
 }
 ```
+
+It's essential to understand that patches for undefined files will have no
+effect and won't negatively impact the configuration process. This has the
+advantage of allowing you to plan integration patches for tools that may not be
+used in a specific project. If the tool is not being used, the corresponding
+configuration won't be applied, thus preventing any unnecessary configurations
+from being generated.
 
 ## Config formats
 
