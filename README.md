@@ -104,12 +104,12 @@ file:
 }
 ```
 
-It's essential to understand that patches for undefined files will have no
-effect and won't negatively impact the configuration process. This has the
-advantage of allowing you to plan integration patches for tools that may not be
-used in a specific project. If the tool is not being used, the corresponding
-configuration won't be applied, thus preventing any unnecessary configurations
-from being generated.
+It's crucial to understand that patches for undefined files will have no effect
+and will not negatively impact the configuration process. This has the advantage
+of allowing you to plan integration patches for tools that may not be used in a
+specific project. If the tool is not being used, the corresponding configuration
+won't be applied, thus preventing any unnecessary configurations from being
+generated.
 
 ## Config formats
 
