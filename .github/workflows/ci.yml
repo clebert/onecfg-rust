@@ -8,7 +8,7 @@ jobs:
     - run: rustup set auto-self-update disable
     - run: rustup toolchain install stable --profile minimal
     - uses: Swatinem/rust-cache@v2
-    - run: cargo check
+    - run: cargo check --all-targets --profile=test
     - run: cargo test
     - run: cargo fmt --all -- --check
     - run: cargo clippy --all-targets --all-features
